@@ -12,9 +12,8 @@ function renderLicenseSection(license) {}
 
 
 
-
 // generateReadme function populating the README.md
-function generateReadme({
+function generateMarkdown({
 	title,
 	license,
 	description,
@@ -55,4 +54,4 @@ This application is covered by the ${license} license.
 };
 
 
-module.exports = generateReadme;
+module.exports = generateMarkdown;
