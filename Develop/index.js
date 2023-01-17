@@ -1,18 +1,14 @@
 //all global requires 
-import inquirer from ("inquirer");
 const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown.js');
-console.log('Hello, welcome to my readme gen!')
-console.log('Answer the following questions!')
-
+const inquirer = require('inquirer');
+const generateReadme = require("./utils/generateMarkdown");
 
 
   // TODO: Create an array of questions for user input
-const questions = () => {
-	return inquirer.prompt([
+ 		inquirer.prompt([
 		{
 			type: "input",
-			name: "name",
+			name: "title",
 			message: "What is the title of your project?",
 		},
 		{
@@ -41,49 +37,81 @@ const questions = () => {
 			name: "contact",
 			message: "how can they contact you?",
 		},
-			{
-			type: "input",
-			name: "GitHub",
-			message: "Enter your GitHub Username?",
-		},
-	]);
-};
+		// 	{
+		// 	type: "input",
+		// 	name: "GitHub",
+		// 	message: "Enter your GitHub Username?",
+		// },
+	])
+	.then((answers) => {
+		const data = generateReadme(answers);
+		console.log(answers.title)
+
+		fs.writeFile("readme.md", data, (err) => 
+		err
+				? console.log(err)
+				: console.log("Successfully created a read me file!")
+		);
+	});
 
 
 
 
 
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-	fs.writeFile(fileName,data, (err) =>{
-		if (err){
-			return console.log(err);
-		}
 
-		console.log('Congrats! you can now look at your Readme!')
-	})
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+// // TODO: Create a function to write README file
+// function writeToFile('README.MD', data) {
+// 	fs.writeFile('README.MD',data, (err) =>{
+// 		if (err){
+// 			return console.log(err);
+// 		}
+// 		console.log('Congrats! you can now look at your Readme!')
+// 	})
+
+// }
 
 
 
 
 // TODO: Create a function to initialize app
-function init() {
-	inquirer.prompt(questions)
-	.then
-}
-
-
-
-
-
+// function init() {
+// 	inquirer.prompt(questions)
+// 	.then (function(anwsers) {
+// 		console.log(anwsers)
+// 		writeToFile('README.md' , generateMarkdown(anwsers));
+// 	});
+// }
 
 
 
 // Function call to initialize app
-init();
+// init();
 
 
 
