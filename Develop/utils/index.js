@@ -4,7 +4,7 @@ const fs = require("fs");
 const generateMarkdown = require("./generateMarkdown");
 
 
-// TODO: Create an array of questions for user input
+// Array of questions for the read me
 inquirer
 	.prompt([
 		{
@@ -53,12 +53,16 @@ inquirer
 			message: "What is your email address?",
 			name: "Email",
 		},
+		{
+			type: "input",
+			message: "Who contributed to this project?:",
+			name: "Contributing",
+		},
 	])
-
 	.then((answers) => {
 		console.log(generateMarkdown(answers));
 		const content = generateMarkdown(answers);
-		console.log(answers.title);
+		// console.log(answers.title);
 
 		fs.writeFile("readme.md", content, (err) =>
 			err
@@ -66,6 +70,7 @@ inquirer
 				: console.log("Successfully created a read me file!")
 		);
 	});
+	//creates the read me file
 
 
 
