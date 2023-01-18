@@ -1,8 +1,8 @@
-//all global requires 
+//all global requires
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./generateMarkdown");
-
+const utils = require("utils");
 
 // Array of questions for the read me
 inquirer
@@ -46,23 +46,22 @@ inquirer
 		{
 			type: "input",
 			message: "What commands are needed to test this app?",
-			name: "Tests",
+			name: "tests",
 		},
 		{
 			type: "input",
 			message: "What is your email address?",
-			name: "Email",
+			name: "email",
 		},
 		{
 			type: "input",
-			message: "Who contributed to this project?:",
-			name: "Contributing",
+			message: "Who contributed to this project?",
+			name: "contributing",
 		},
 	])
 	.then((answers) => {
 		console.log(generateMarkdown(answers));
-		const content = generateMarkdown(answers);
-		// console.log(answers.title);
+		const content = generateMarkdown({ ...answers });
 
 		fs.writeFile("readme.md", content, (err) =>
 			err
@@ -70,24 +69,11 @@ inquirer
 				: console.log("Successfully created a read me file!")
 		);
 	});
-	//creates the read me file
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
 // GIVEN a command-line application that accepts user input
 // WHEN I am prompted for information about my application repository
 // THEN a high-quality, professional README.md is generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions

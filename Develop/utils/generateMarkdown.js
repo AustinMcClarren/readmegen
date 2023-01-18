@@ -1,7 +1,9 @@
 // // TODO: Create a function that returns a license badge based on which license is passed in
 
+// const { default: ListPrompt } = require("inquirer/lib/prompts/list");
+
 license = "";
-function renderlicense(license) {
+function renderLicense(license) {
 	switch (license) {
 		case "GNU AGPLv3":
 			return (license =
@@ -41,46 +43,61 @@ function renderlicense(license) {
 //Create a function that returns the license section of README
 // // If there is no license, return an empty string
 function renderLicenseSection(license) {
-let renderLicenseSection;
-switch(licenseType){
-	case {license}:
-		LicenseSection = ` `
-		default:
-			LicenseSection = `No license information provided`;
-
-} 
-return LicenseSection;
+	if (!license) {
+		return ``;
+	} else {
+		return `## License
+    this project is licensed under ${license}`;
+	}
 }
-
 
 
 // function to generate markdown for README
 function generateMarkdown(answers) {
     return `
 # ${answers.title}
+\`\`\`
 https://github.com/${answers.username}
+\`\`\`
+
 # Description
 ${answers.description}
+\`\`\`
+
 # Table of Contents 
-* [Installation](#installation)
-* [Usage](#usage)
-* [License](#license)
-* [Contributing](#contributing)
-* [Tests](#tests)
-* [Questions](#questions)
-# Installation
-The following necessary dependencies must be installed to run the application properly: ${answers.Installation}
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
+\`\`\`
+
+
+# installation
+The following necessary dependencies must be installed to run the application properly: ${answers.installation}
+\`\`\`
+
 # Usage
 In order to use this app, ${answers.usage} 
+\`\`\`
+
 # License
 This project is licensed under the ${answers.license} license. 
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
+\`\`\`
+
 # Contributing
-contributors: ${answers.contributing}
+${answers.contributing}
+\`\`\`
+
 # Tests
 The following is needed to run the test: ${answers.tests}
+\`\`\`
+
 # Questions
-If you have any questions about the repo, open an issue or contact ${answers.username} directly at : ${answers.Email}.
-`
+If you have any questions about the repo, open an issue or contact ${answers.username} directly at : ${answers.email}
+\`\`\`
+`;
 }
 module.exports = generateMarkdown;
