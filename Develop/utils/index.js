@@ -1,12 +1,12 @@
 //all global requires 
-const fs = require('fs');
-const inquirer = require('inquirer');
-const generateReadme = require("./utils/generateMarkdown");
-const generateMarkdown = require('./utils/generateMarkdown');
+const inquirer = require("inquirer");
+const fs = require("fs");
+const generateMarkdown = require("./generateMarkdown");
 
 
-  // TODO: Create an array of questions for user input
- 		inquirer.prompt([
+// TODO: Create an array of questions for user input
+inquirer
+	.prompt([
 		{
 			type: "input",
 			name: "title",
@@ -31,29 +31,51 @@ const generateMarkdown = require('./utils/generateMarkdown');
 			type: "checkbox",
 			name: "license",
 			message: "Choose a license!",
-			choices: ['MIT', 'MPL', 'GPL', 'BSD', 'NONE']
+			choices: ["MIT", "MPL", "GPL", "BSD", "NONE"],
 		},
 		{
 			type: "input",
 			name: "contact",
 			message: "how can they contact you?",
 		},
-			{
+		{
 			type: "input",
-			name: "GitHub",
+			name: "username",
 			message: "Enter your GitHub Username?",
 		},
+		{
+			type: "input",
+			message: "What commands are needed to test this app?",
+			name: "Tests",
+		},
+		{
+			type: "input",
+			message: "What is your email address?",
+			name: "Email",
+		},
 	])
-	.then((answers) => {
-		const content = ''; //what goes here?
-		console.log(answers.title)
 
-		fs.writeFile("readme.md", content, (err) => 
-		err
-			? console.log(err)
-			: console.log("Successfully created a read me file!")
+	.then((answers) => {
+		console.log(generateMarkdown(answers));
+		const content = generateMarkdown(answers);
+		console.log(answers.title);
+
+		fs.writeFile("readme.md", content, (err) =>
+			err
+				? console.log(err)
+				: console.log("Successfully created a read me file!")
 		);
 	});
+
+
+
+
+
+
+
+
+
+
 
 
 
