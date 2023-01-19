@@ -40,14 +40,15 @@ function renderLicense(license) {
 
 //Create a function that returns the license section of README
 // // If there is no license, return an empty string
-function renderLicenseSection(license) {
-	if (!license) {
-		return ``;
-	} else {
-		return `## License
-    this project is licensed under ${license}`;
-	}
-}
+// function renderLicenseSection(license) {
+
+// 	if (!license) {
+// 		return ` `;
+// 	} else {
+// 		return `## License
+//     this project is licensed under ${renderLicense()}`;
+// 	}
+// }
 
 
 // function to generate markdown for README
@@ -83,7 +84,7 @@ In order to use this app, ${answers.usage}
 
 # License
 This project is licensed under the ${answers.license} license. 
-![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
+![GitHub license](${renderLicense(answers.license)})
 
 
 # Contributing
