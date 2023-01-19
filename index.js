@@ -1,7 +1,7 @@
 //all global requires
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateMarkdown = require("./utils/generateMarkdown.js");
+const generateMarkdown = require("./utils/generateMarkdown");
 
 // Array of questions for the read me
 inquirer
@@ -27,10 +27,18 @@ inquirer
 			message: "how do you use your project?",
 		},
 		{
-			type: "checkbox",
+			type: "list",
+			choices: 
+			["MIT", 
+			"GNU_AGPLv3", 
+			"GNU_GPLv3", 
+			"GNU_LGPLv3", 
+			"Mozilla Public License 2.0",
+			"Apache License 2.0", 
+			"Boost Software License 1.0", 
+			"OTHER", 
+			"NONE"],
 			name: "license",
-			message: "Choose a license!",
-			choices: ["MIT", "MPL", "GPL", "BSD", "NONE"],
 		},
 		{
 			type: "input",
