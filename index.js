@@ -62,11 +62,11 @@ inquirer
 		console.log(generateMarkdown(answers));
 		const content = generateMarkdown({ ...answers });
 
-		fs.writeFile("readme.md", content, (err) =>
+		fs.writeFileSync("readme.md", generateMarkdown({ ...answers }, (err) =>
 			err
 				? console.log(err)
 				: console.log("Successfully created a read me file!")
-		);
+		));
 	});
 
 

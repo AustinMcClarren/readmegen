@@ -54,48 +54,49 @@ function renderLicenseSection(license) {
 function generateMarkdown(answers) {
     return `
 # ${answers.title}
-\`\`\`
+
 https://github.com/${answers.username}
-\`\`\`
+
 
 # Description
 ${answers.description}
-\`\`\`
+
 
 # Table of Contents 
-- [Installation](#installation)
-- [Usage](#usage)
-- [License](#license)
-- [Contributing](#contributing)
-- [Tests](#tests)
-- [Questions](#questions)
-\`\`\`
+
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
 
 
-# installation
+
+# Installation
 The following necessary dependencies must be installed to run the application properly: ${answers.installation}
-\`\`\`
+
 
 # Usage
 In order to use this app, ${answers.usage} 
-\`\`\`
+
 
 # License
 This project is licensed under the ${answers.license} license. 
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
-\`\`\`
+
 
 # Contributing
 ${answers.contributing}
-\`\`\`
+
 
 # Tests
 The following is needed to run the test: ${answers.tests}
-\`\`\`
+
 
 # Questions
 If you have any questions about the repo, open an issue or contact ${answers.username} directly at : ${answers.email}
-\`\`\`
+
 `;
 }
 module.exports = generateMarkdown;
