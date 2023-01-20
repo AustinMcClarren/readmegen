@@ -3,6 +3,7 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
 
+
 // Array of questions for the read me
 inquirer
 	.prompt([

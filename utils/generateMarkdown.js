@@ -1,4 +1,4 @@
-// // TODO: Create a function that returns a license badge based on which license is passed in
+const { default: ListPrompt } = require("inquirer/lib/prompts/list");
 
 license = "";
 function renderLicense(license) {
@@ -40,20 +40,6 @@ function renderLicense(license) {
 };
 
 
-
-//Create a function that returns the license section of README
-// // If there is no license, return an empty string
-// function renderLicenseSection(license) {
-// 	console.log(renderLicenseSection)
-// 	if (!license) {
-// 		return ` `;
-// 	} else {
-// 		return `## License
-//     this project is licensed under ${renderLicense(answers.license)}`;
-// 	}
-// }
-
-
 // function to generate markdown for README
 function generateMarkdown(answers) {
     return `
@@ -86,7 +72,7 @@ In order to use this app, ${answers.usage}
 
 
 ## License
-![badge](https://img.shields.io/badge/license${answers.license})
+[![License](https://img.shields.io/badge/License-${answers.license}-blue)](https://opensource.org/licenses/${license})
 
 
 
